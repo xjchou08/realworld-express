@@ -1,6 +1,7 @@
 const express = require("express");
 const userCtrl = require("../controller/user");
 const userValid = require("../validator/user");
+const auth = require('../middleware/auth')
 
 const router = express.Router();
 
@@ -14,6 +15,6 @@ router.post("/register", userValid.register, userCtrl.register);
 router.put("/user", userCtrl.UpdateCurrentUsr);
 
 //获取当前用户数据
-router.get("/user", userCtrl.getCurrentUsr);
+router.get("/user", auth, userCtrl.getCurrentUsr);
 
 module.exports = router;

@@ -1,10 +1,11 @@
 const express = require("express");
 const articleCtrl = require("../controller/article");
+const auth = require("../middleware/auth");
 
 const router = express.Router();
 
 //获取文章清单
-router.get("/", articleCtrl.getArticle);
+router.get("/", auth, articleCtrl.getArticle);
 
 //获取文章清单
 router.get("/feed", articleCtrl.getArticleFeed);
