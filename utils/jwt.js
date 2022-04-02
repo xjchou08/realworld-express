@@ -1,11 +1,8 @@
-//json web token
 const jwt = require('jsonwebtoken')
+const { promisify } = require('util')
 
-//生成
-const token = jwt.sign({
-"foo":"bar"
-},'dfssdfds')
+exports.sign = promisify(jwt.sign)
 
-console.log(token)
+exports.verify = promisify(jwt.verify)
 
-
+exports.decode = promisify(jwt.decode)
